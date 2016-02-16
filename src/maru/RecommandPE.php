@@ -55,7 +55,7 @@ class RecommandPe extends PluginBase implements Listener{
 			return false;
 		}
 		if (isset($this->recommandDB[strtolower($sender->getName())])) {
-			$sender->sendMessage(TextFormat::RED."당신은 이미 추천한 사람이 있습니다.");
+			$sender->sendMessage(TextFormat::RED."당신은 이미 입력한 추천인이 있습니다.");
 			return true;
 		}
 		if (!isset($this->uuidlist[strtolower($args[0])])) {
@@ -69,6 +69,7 @@ class RecommandPe extends PluginBase implements Listener{
 		EconomyAPI::getInstance()->addMoney($args[0], $this->config["recommand-prize"]);
 		EconomyAPI::getInstance()->addMoney($sender, $this->config["commander-prize"]);
 		$sender->sendMessage("추천인을 입력해서 {$this->config["recommand-prize"]}원을 얻었습니다.");
+		$this->recommandDB[strtolower($sender->getName())] = strtolower($args[0]);
 	}
 	public function onLogin(PlayerLoginEvent $event) {
 		$player = $event->getPlayer();
