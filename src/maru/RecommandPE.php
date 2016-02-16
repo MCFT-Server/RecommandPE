@@ -70,6 +70,7 @@ class RecommandPe extends PluginBase implements Listener{
 		EconomyAPI::getInstance()->addMoney($sender, $this->config["commander-prize"]);
 		$sender->sendMessage("추천인을 입력해서 {$this->config["recommand-prize"]}원을 얻었습니다.");
 		$this->recommandDB[strtolower($sender->getName())] = strtolower($args[0]);
+		return true;
 	}
 	public function onLogin(PlayerLoginEvent $event) {
 		$player = $event->getPlayer();
