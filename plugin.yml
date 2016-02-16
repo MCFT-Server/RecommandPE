@@ -1,0 +1,16 @@
+name: RecommandPE
+main: maru\RecommandPe
+author: maru
+version: "1.0.0"
+api: [1.12.0, 1.13.0, 2.0.0] 
+
+commands:
+ 추천인:
+  usage: "/추천인 <플레이어>"
+  description: "자신을 추천해준 사람을 지목합니다!"
+
+permissions:
+ recommandpe.*:
+  default: true
+  children:
+   recommandpe.cmd:
